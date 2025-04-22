@@ -9,6 +9,7 @@ body {
   .card, .image-container, .form-container, .wish-container {
     background: white;
     padding: 2em;
+    height: 50em;
     margin: 5% auto;
     max-width: 600px;
     border-radius: 20px;
