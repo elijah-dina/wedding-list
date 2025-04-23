@@ -64,4 +64,41 @@
     </p>
   </div>
 </body>
+
+<script>
+  function showGuestOptions() {
+    document.getElementById('guestOptions').style.display = 'block';
+    // Optionally, uncheck the 'no' option if 'yes' is selected
+    const notAttending = document.querySelector('input[name="will_attend"][value="no"]');
+    if (notAttending.checked) {
+      notAttending.checked = false;
+    }
+  }
+
+  function hideGuestOptions() {
+    document.getElementById('guestOptions').style.display = 'none';
+    // Optionally, uncheck any selected guest count when 'no' is selected
+    const guestOptions = document.querySelectorAll('input[name="guests"]');
+    guestOptions.forEach(option => option.checked = false);
+  }
+
+  function handleSubmit() {
+    const attending = document.querySelector('input[name="will_attend"]:checked');
+    if (attending && attending.value === 'yes') {
+      const selectedGuests = document.querySelector('input[name="guests"]:checked');
+      if (selectedGuests) {
+        alert(`Thank you! You have confirmed for ${selectedGuests.value} guest(s).`);
+      } else {
+        alert('Please select the number of guests attending.');
+        return false; // Prevent form submission
+      }
+    } else if (attending && attending.value === 'no') {
+      alert("Thank you for letting us know.");
+    } else {
+      alert('Please indicate whether you will be attending.');
+      return false; // Prevent form submission
+    }
+    return false; // Prevent default form submission
+  }
+</script>
 </html>
