@@ -7,7 +7,6 @@ app = Flask(__name__)
 EXCEL_PATH = "guest_list.xlsx"
 df = pd.read_excel(EXCEL_PATH, usecols=["NAME", "NUMBER", "REMOVE"])
 df = df.reset_index().rename(columns={'index': 'ID'})
-print(df)
 
 # Route to the main invitation page
 @app.route("/guest/<int:guest_id>")
