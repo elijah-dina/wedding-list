@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="fade-in">
+  <div class="image-container">
+    <img src="{{ url_for('static', filename='invitation_page2.jpg') }}" alt="Wedding Invitation Page 2" class="invite-image">
+  </div>
+
+  <div class="details-container">
+    <h2 class="title-script">Wedding Details</h2>
+
+    <div class="ceremony">
+      <h3>Ceremony</h3>
+      <p>17:30 (5:30 PM)</p>
+      <p>Saint Elie Church, Ain Aar</p>
+      <p><a href="https://maps.google.com/?cid=3860426505224109966" class="details-link" target="_blank">View on Google Maps</a></p>
+    </div>
+
+    <div class="reception">
+      <h3>Reception</h3>
+      <p>19:30 (7:30 PM)</p>
+      <p>Club La Marina, Dbayeh</p>
+      <p><a href="https://maps.google.com/?cid=17394086388713380498" class="details-link" target="_blank">View on Google Maps</a></p>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <h2 class="title-script">RSVP</h2>
+    <p>Kindly before <strong>May 29th</strong></p>
+  
+    <form method="POST" action="{{ url_for('rsvp', guest_id=guest_id) }}" onsubmit="return handleSubmit()">
+      <input type="hidden" name="guest_id" value="{{ guest_id }}">
+      <p>Will you be attending?</p>
+      <div class="radio-group">
+        <label><input type="radio" name="will_attend" value="no" required onclick="hideGuestOptions()">Sorry, won't make it 😔</label>
+        <label><input type="radio" name="will_attend" value="yes" onclick="showGuestOptions()">With pleasure 😊</label>
+      </div>
+  
+      <div id="guestOptions" style="display: none;">
+        <p>Number of Guests:</p>
+        <div class="radio-group" id="guestRadioGroup"></div>
+      </div>
+  
+      <button type="submit" class="rsvp-button">Confirm</button>
+    </form>
+    
+    <div class="contact-options">
+      <p>Or call</p>
+      <div class="phone-buttons">
+        <a href="tel:+9613539823" class="phone-link">📞 +961 3 53 98 23</a>
+        <a href="tel:+96181736313" class="phone-link">📞 +961 81 73 63 13</a>
+      </div>
+    </div>
+  </div>
+
+  {% if remove != 'REMOVE' %}
+  <div class="wish-container">
+      <h2 class="title-script">Wedding List</h2>
+      <p class="wish-message">
+          For those who wish, our wedding registry is available at:<br>
+          Wish Money<br>
+          Account Name: Joseph Georges Naccache or Mia Nasr<br>
+          Account Number: XXXXXXXX
+      </p>
+  </div>
+  {% endif %}
+
+  <script>
+    const maxGuests = {{ number }};  // passed from Flask
+    const guestRadioGroup = document.getElementById('guestRadioGroup');
+
+    function showGuestOptions() {
+      document.getElementById('guestOptions').style.display = 'block';
+      guestRadioGroup.innerHTML = '';  // clear previous options
+
+      for (let i = 1; i <= maxGuests; i++) {
+        const label = document.createElement('label');
+        label.innerHTML = `<input type="radio" name="guests" value="${i}">${i}`;
+        guestRadioGroup.appendChild(label);
+      }
+
+      const notAttending = document.querySelector('input[name="will_attend"][value="no"]');
+      if (notAttending.checked) {
+        notAttending.checked = false;
+      }
+    }
+
+    function hideGuestOptions() {
+      document.getElementById('guestOptions').style.display = 'none';
+      const guestOptions = document.querySelectorAll('input[name="guests"]');
+      guestOptions.forEach(option => option.checked = false);
+    }
+
+    function handleSubmit() {
+      const attending = document.querySelector('input[name="will_attend"]:checked');
+      if (attending && attending.value === 'yes') {
+        const selectedGuests = document.querySelector('input[name="guests"]:checked');
+        if (selectedGuests) {
+          alert(`Thank you! You have confirmed for ${selectedGuests.value} guest(s).`);
+        } else {
+          alert('Please select the number of guests attending.');
+          return false;
+        }
+      } else if (attending && attending.value === 'no') {
+        alert("Thank you for letting us know.");
+      } else {
+        alert('Please indicate whether you will be attending.');
+        return false;
+      }
+      return true; // Allow form submission
+    }
+  </script>
+</body>
+</html>

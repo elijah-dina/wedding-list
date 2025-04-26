@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="card fade-in">
+        <h1 class="title-script">Thank you, {{ name }}!</h1>
+        <p class="wish-message">
+            Your RSVP has been received with love.
+        </p>
+    </div>
+
+</body>
+</html>
