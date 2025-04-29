@@ -62,15 +62,18 @@
 
   {% if remove != 'REMOVE' %}
   <div class="wish-container">
-      <h2 class="title-script">Wedding List</h2>
-      <p class="wish-message">
-          For those who wish, our wedding registry is available at:<br>
-          Wish Money<br>
-          Account Name: <br>Joseph Naccache or Mia Nasr<br>
-          Account Number: 20997602
-      </p>
+    <h2 class="title-script">Wedding List</h2>
+    <p class="wish-message">
+      If you wish to contribute, our wedding registry details are below:
+    </p>
+    <div class="bank-info">
+      <p> WISH MONEY</p><br>
+      <p><strong>Account Name:</strong> <br> Joseph Naccache or Mia Nasr</p><br>
+      <p><strong>Account Number:</strong> 20997602</p> <br>
+    </div>
   </div>
   {% endif %}
+
 
   <script>
     const maxGuests = {{ number }};  // passed from Flask

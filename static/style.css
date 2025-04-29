@@ -7,8 +7,7 @@ body {
 }
 
 .card {
-  background: white;
-  padding: 2em;
+  background: #f9f8f4;
   min-height: 48em; /* You might want to adjust this based on your content */
   margin: 3em auto;
   max-width: 600px;
@@ -19,13 +18,13 @@ body {
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
   text-align: center; /* Center text within its own element */
+  border: 3px solid #556B2F;
 }
 
 .image-container, .form-container, .wish-container, .details-container {
-  background: white;
-  padding: 2em;
-  height: auto; /* You might want to adjust this based on your content */
+  background: #f9f8f4;
   margin: 3em auto;
+  height: auto; /* You might want to adjust this based on your content */
   max-width: 600px;
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
@@ -34,6 +33,7 @@ body {
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
   text-align: center; /* Center text within its own element */
+  border: 3px solid #556B2F;
 }
 
 /* Define Brittany Signature as a web font */
@@ -115,6 +115,7 @@ img.invite-image {
   margin: 1rem 0;
 }
 
+
 .radio-group label {
   font-size: 1.1rem;
   cursor: pointer;
@@ -133,11 +134,35 @@ input {
   font-size: 1em;
 }
 
-/* Wish section */
+.wish-card {
+  background: #f9f8f4;
+  border: 2px solid olive;
+  border-radius: 20px;
+  padding: 2em;
+  max-width: 500px;
+  margin: 3em auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.wish-title {
+  font-family: 'Great Vibes', cursive; /* or your elegant script font */
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  color: #4a4a4a;
+}
+
 .wish-message {
-  font-size: 1.1rem;
-  margin: 1.5rem 0;
-  line-height: 1.7;
+  font-family: 'Georgia', serif;
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 1.5em;
+}
+
+.bank-info p {
+  margin: 0.3em 0;
+  font-weight: 500;
+  color: #333;
 }
 
 .wish-number {
@@ -203,7 +228,6 @@ a[href^="tel:"]:hover {
   .details-container {
     width: 80%;
     margin: 1.5em auto;
-    padding: 1em;
     height: auto;
   }
 
@@ -221,13 +245,21 @@ a[href^="tel:"]:hover {
     gap: 1rem;
   }
 
+  #guestRadioGroup {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+
   .button-group button,
   .button-link,
   .rsvp-button,
   .details-link,
   .back-button,
   .phone-link {
-    width: 75%;
+    width: 80%;
     text-align: center;
     font-size: 1rem;
   }
