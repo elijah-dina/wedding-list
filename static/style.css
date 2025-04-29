@@ -9,7 +9,7 @@ body {
 .card {
   background: white;
   padding: 2em;
-  height: 48em; /* You might want to adjust this based on your content */
+  min-height: 48em; /* You might want to adjust this based on your content */
   margin: 3em auto;
   max-width: 600px;
   border-radius: 20px;
@@ -92,8 +92,8 @@ h1, .guest-name, .title-script {
 }
 
 img.invite-image {
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  height: auto;
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
@@ -192,4 +192,47 @@ a[href^="tel:"] {
 
 a[href^="tel:"]:hover {
   text-decoration: underline;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .card,
+  .image-container,
+  .form-container,
+  .wish-container,
+  .details-container {
+    width: 80%;
+    margin: 1.5em auto;
+    padding: 1em;
+    height: auto;
+  }
+
+  h1, .guest-name, .title-script {
+    font-size: 2rem;
+  }
+
+  .invite-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .button-group button,
+  .button-link,
+  .rsvp-button,
+  .details-link,
+  .back-button,
+  .phone-link {
+    width: 75%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .phone-buttons {
+    flex-direction: column;
+  }
 }
