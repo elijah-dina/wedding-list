@@ -1,53 +1,95 @@
-import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 from flask import Flask, render_template, request, redirect, url_for
 import os
+from slugify import slugify
+from urllib.parse import urljoin  # Import for creating absolute URLs
 
 app = Flask(__name__)
 
-# Load the Excel file
-EXCEL_PATH = "guest_list.xlsx"
-df = pd.read_excel(EXCEL_PATH, usecols=["NAME", "NUMBER", "REMOVE"])
-df = df.reset_index().rename(columns={'index': 'ID'})
+# Connect to Google Sheets
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+client = gspread.authorize(creds)
 
-# Route to the main invitation page
-@app.route("/guest/<int:guest_id>")
-def show_guest(guest_id):
-    if 0 <= guest_id < len(df):
-        guest = df.iloc[guest_id]
-        return render_template("index.html", name=guest["NAME"], number=guest["NUMBER"], guest_id=guest["ID"])
+# Open your sheet by name
+SHEET_NAME = "guest_list"  # Or use `open_by_key('your_sheet_id')`
+sheet = client.open(SHEET_NAME).sheet1  # First tab
+
+
+# Function to get the base URL of your application
+def get_base_url():
+    # This will work if you are accessing the request context
+    # which is available during request handling.
+    # Outside of a request context, you might need to configure this.
+    return request.url_root
+
+
+# Load all rows (as a list of dicts) with the invitation link
+def load_guest_data():
+    records = sheet.get_all_records()
+    updated_records = []
+    for index, record in enumerate(records):
+        guest_name_slug = slugify(record["NAME"])
+        guest_id = index
+        # Construct the absolute URL for the guest's invite page
+        invite_link = urljoin(get_base_url(), url_for('show_guest', guest_name=guest_name_slug, guest_id=guest_id))
+        record['INVITE_LINK'] = invite_link  # Add the new key-value pair
+        updated_records.append(record)
+    return updated_records
+
+
+@app.route("/guest/<guest_name>/<int:guest_id>")
+def show_guest(guest_name, guest_id):
+    records = load_guest_data()
+    if 0 <= guest_id < len(records):
+        guest = records[guest_id]
+        if slugify(guest["NAME"]) == guest_name:
+            return render_template("index.html", name=guest["NAME"], number=guest["NUMBER"], guest_id=guest_id, guest_name=guest_name) # Pass guest_name to the template
     return "Guest not found", 404
 
-# Route for the journey page (RSVP page) for a specific guest
-@app.route("/journey/<int:guest_id>")
-def journey(guest_id):
-    if 0 <= guest_id < len(df):
-        guest = df.iloc[guest_id]
-        return render_template(
-            "page2.html",
-            name=guest["NAME"],
-            number=guest["NUMBER"],
-            guest_id=guest["ID"],
-            remove=guest["REMOVE"],  # Pass REMOVE column too
-        )
+
+@app.route("/journey/<guest_name>/<int:guest_id>")
+def journey(guest_name, guest_id):
+    records = load_guest_data()
+    if 0 <= guest_id < len(records):
+        guest = records[guest_id]
+        if slugify(guest["NAME"]) == guest_name:
+            return render_template(
+                "page2.html",
+                name=guest["NAME"],
+                number=guest["NUMBER"],
+                guest_id=guest_id,
+                remove=guest["REMOVE"],
+                invite_link=guest['INVITE_LINK'],
+                guest_name=guest_name  # Explicitly pass guest_name again
+            )
     return "Guest not found", 404
 
-# Route to save RSVP responses
-@app.route("/rsvp/<int:guest_id>", methods=["POST"])
-def rsvp(guest_id):
-    if 0 <= guest_id < len(df):
-        attending = request.form.get("will_attend")
-        guests = request.form.get("guests") if attending == "yes" else "Not attending"
-        df.at[guest_id, "CONFIRMED_RESERVATIONS"] = guests
-        df.to_excel(EXCEL_PATH, index=False)
-        return redirect(url_for("thank_you", guest_id=guest_id))
+
+@app.route("/rsvp/<guest_name>/<int:guest_id>", methods=["POST"])
+def rsvp(guest_name, guest_id):
+    records = load_guest_data()
+    if 0 <= guest_id < len(records):
+        guest = records[guest_id]
+        if slugify(guest["NAME"]) == guest_name:
+            attending = request.form.get("will_attend")
+            guests = request.form.get("guests") if attending == "yes" else "Not attending"
+            sheet.update_cell(guest_id + 2, 5, guests)  # Column 5 = 'CONFIRMED_RESERVATIONS'
+            # Instead of redirecting immediately, pass a message to the thank you page.
+            return redirect(url_for("thank_you", guest_name=guest_name, guest_id=guest_id, rsvp_status="Your RSVP has been saved!"))
     return "Guest not found", 404
 
-# Route for thank you page after submitting RSVP
-@app.route("/thankyou/<int:guest_id>")
-def thank_you(guest_id):
-    if 0 <= guest_id < len(df):
-        guest = df.iloc[guest_id]
-        return render_template("thankyou.html", name=guest["NAME"])
+
+@app.route("/thankyou/<guest_name>/<int:guest_id>")
+def thank_you(guest_name, guest_id):
+    records = load_guest_data()
+    if 0 <= guest_id < len(records):
+        guest = records[guest_id]
+        if slugify(guest["NAME"]) == guest_name:
+            #  Get the rsvp_status from the URL.  Default to None if not present.
+            rsvp_status = request.args.get('rsvp_status', None)
+            return render_template("thankyou.html", name=guest["NAME"], rsvp_status=rsvp_status) # Pass to template
     return "Guest not found", 404
 
 

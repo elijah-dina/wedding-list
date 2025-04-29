@@ -34,7 +34,7 @@
     <h2 class="title-script">RSVP</h2>
     <p>Kindly before <strong>May 29th</strong></p>
   
-    <form method="POST" action="{{ url_for('rsvp', guest_id=guest_id) }}" onsubmit="return handleSubmit()">
+    <form method="POST" action="{{ url_for('rsvp', guest_id=guest_id, guest_name=guest_name) }}" onsubmit="return handleSubmit()">
       <input type="hidden" name="guest_id" value="{{ guest_id }}">
       <p>Will you be attending?</p>
       <div class="radio-group">

@@ -10,7 +10,7 @@
   <div class="card">
     <p class="guest-name">{{ name }}</p>
     <div class="button-group">
-      <a href="{{ url_for('journey', guest_id=guest_id) }}" class="button-link">Our Journey</a>
+      <a href="{{ url_for('journey', guest_id=guest_id, guest_name=guest_name) }}" class="button-link">Our Journey</a>
     </div>
   </div>
 </body>

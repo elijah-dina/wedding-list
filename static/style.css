@@ -1,12 +1,27 @@
 body {
-    font-family: 'Lora', serif;
-    background-color: #f4f1ee;
-    margin: 0;
-    text-align: center;
-    color: #2e3a2e;
-  }
+  font-family: 'Calibri', sans-serif; /* Changed to Calibri */
+  background-color: #f4f1ee;
+  margin: 0;
+  text-align: center;
+  color: #2e3a2e;
+}
 
-.card, .image-container, .form-container, .wish-container, .details-container {
+.card {
+  background: white;
+  padding: 2em;
+  height: 48em; /* You might want to adjust this based on your content */
+  margin: 3em auto;
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  display: flex; /* Enable Flexbox for the card */
+  flex-direction: column; /* Stack the content vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text within its own element */
+}
+
+.image-container, .form-container, .wish-container, .details-container {
   background: white;
   padding: 2em;
   height: auto; /* You might want to adjust this based on your content */
@@ -20,153 +35,161 @@ body {
   align-items: center; /* Center horizontally */
   text-align: center; /* Center text within its own element */
 }
-  
-  h1, .guest-name, .title-script {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    color: #556B2F;
-    margin-bottom: 1rem;
-  }
-  
-  .button-group {
-    margin-top: 2rem;
-  }
-  
-  .button-group button,
-  .button-link,
-  .rsvp-button,
-  .details-link,
-  .back-button {
-    display: inline-block;
-    margin: 1em 0.5em;
-    padding: 0.75em 1.5em;
-    font-size: 1em;
-    background-color: #556B2F;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .button-group button:hover,
-  .button-link:hover,
-  .rsvp-button:hover,
-  .details-link:hover {
-    background-color: #6d8e3c;
-  }
-  
-  .back-button {
-    background-color: transparent;
-    color: #556B2F;
-    border: 1px solid #556B2F;
-  }
-  
-  .back-button:hover {
-    background-color: #e8efe8;
-  }
-  
-  img.invite-image {
-    width: 90%;
-    max-width: 600px;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  }
-  
-  .fade-in {
-    animation: fadeIn 1.5s ease-in;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* RSVP-specific styles */
-  .radio-group {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 1rem 0;
-  }
-  
-  .radio-group label {
-    font-size: 1.1rem;
-    cursor: pointer;
-  }
-  
-  .radio-group input {
-    margin-right: 0.5em;
-  }
-  
-  input {
-    width: 90%;
-    padding: 0.5em;
-    margin: 0.5em 0;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-  }
-  
-  /* Wish section */
-  .wish-message {
-    font-size: 1.1rem;
-    margin: 1.5rem 0;
-    line-height: 1.7;
-  }
-  
-  .wish-number {
-    font-size: 1.5rem;
-    color: #2e3a2e;
-    font-weight: bold;
-    background-color: #f4f1ee;
-    padding: 1rem;
-    border-radius: 15px;
-    display: inline-block;
-    margin: 1rem 0;
-  }
 
-  .contact-options {
-    margin-bottom: 2rem;
-  }
-  
-  .phone-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 1rem 0;
-  }
-  
-  .phone-link {
-    background-color: #e8efe8;
-    color: #556B2F;
-    padding: 0.7em 1.5em;
-    border-radius: 25px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: background 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-  }
-  
-  .phone-link:hover {
-    background-color: #d0e0d0;
-    text-decoration: underline;
-  }
-  
-  
-  /* Phone number links */
-  a[href^="tel:"] {
-    color: #556B2F;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  a[href^="tel:"]:hover {
-    text-decoration: underline;
-  }
-  
+/* Define Brittany Signature as a web font */
+@font-face {
+  font-family: 'Brittany Signature'; /* Keep the name you chose */
+  src: url('fonts/BrittanySignature.otf') format('opentype'),
+  url('fonts/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, .guest-name, .title-script {
+  font-family: 'Brittany Signature', cursive; /* Changed to Brittany Signature */
+  font-size: 2.5rem;
+  color: #556B2F;
+  margin-bottom: 1rem;
+}
+
+.button-group {
+  margin-top: 2rem;
+}
+
+.button-group button,
+.button-link,
+.rsvp-button,
+.details-link,
+.back-button {
+  display: inline-block;
+  margin: 1em 0.5em;
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  background-color: #556B2F;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.button-group button:hover,
+.button-link:hover,
+.rsvp-button:hover,
+.details-link:hover {
+  background-color: #6d8e3c;
+}
+
+.back-button {
+  background-color: transparent;
+  color: #556B2F;
+  border: 1px solid #556B2F;
+}
+
+.back-button:hover {
+  background-color: #e8efe8;
+}
+
+img.invite-image {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RSVP-specific styles */
+.radio-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.radio-group label {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.radio-group input {
+  margin-right: 0.5em;
+}
+
+input {
+  width: 90%;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+/* Wish section */
+.wish-message {
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  line-height: 1.7;
+}
+
+.wish-number {
+  font-size: 1.5rem;
+  color: #2e3a2e;
+  font-weight: bold;
+  background-color: #f4f1ee;
+  padding: 1rem;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 1rem 0;
+}
+
+.contact-options {
+  margin-bottom: 2rem;
+}
+
+.phone-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.phone-link {
+  background-color: #e8efe8;
+  color: #556B2F;
+  padding: 0.7em 1.5em;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.phone-link:hover {
+  background-color: #d0e0d0;
+  text-decoration: underline;
+}
+
+
+/* Phone number links */
+a[href^="tel:"] {
+  color: #556B2F;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a[href^="tel:"]:hover {
+  text-decoration: underline;
+}
