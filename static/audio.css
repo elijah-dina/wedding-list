@@ -1,0 +1,9 @@
+audio {
+    position: fixed;
+    top: -100px; /* Move it off-screen */
+    left: -100px;
+    width: 1px;
+    height: 1px;
+    opacity: 0; /* Make it invisible */
+    pointer-events: none; /* Prevent it from intercepting clicks */
+}
