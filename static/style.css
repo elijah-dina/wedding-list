@@ -53,7 +53,7 @@ body {
 h1, .guest-name, .title-script {
   font-family: 'Brittany Signature', cursive; /* Changed to Brittany Signature */
   font-size: 2.5rem;
-  color: #556B2F;
+  color: #2e3a2e;
   margin-bottom: 1rem;
 }
 
@@ -70,7 +70,7 @@ h1, .guest-name, .title-script {
   margin: 1em 0.5em;
   padding: 0.75em 1.5em;
   font-size: 1em;
-  background-color: #556B2F;
+  background-color: #2e3a2e;
   color: white;
   border: none;
   border-radius: 25px;
@@ -83,18 +83,9 @@ h1, .guest-name, .title-script {
 .button-link:hover,
 .rsvp-button:hover,
 .details-link:hover {
-  background-color: #6d8e3c;
+  background-color: #2e3a2e;
 }
 
-.back-button {
-  background-color: transparent;
-  color: #556B2F;
-  border: 1px solid #556B2F;
-}
-
-.back-button:hover {
-  background-color: #e8efe8;
-}
 
 img.invite-image {
   width: 40em;
@@ -154,7 +145,7 @@ input {
   font-family: 'Brittany Signature', cursive; /* or your elegant script font */
   font-size: 2em;
   margin-bottom: 0.5em;
-  color: #4a4a4a;
+  color: #2e3a2e;
 }
 
 .wish-message {
@@ -195,7 +186,7 @@ input {
 
 .phone-link {
   background-color: #e8efe8;
-  color: #556B2F;
+  color: #2e3a2e;
   padding: 0.7em 1.5em;
   border-radius: 25px;
   font-weight: bold;
@@ -215,7 +206,7 @@ input {
 
 /* Phone number links */
 a[href^="tel:"] {
-  color: #556B2F;
+  color: #2e3a2e;
   text-decoration: none;
   font-weight: bold;
 }
@@ -282,6 +273,7 @@ a[href^="tel:"]:hover {
     width: 80%;
     text-align: center;
     font-size: 0.8rem;
+    margin: 0;
   }
 
   .phone-buttons {
