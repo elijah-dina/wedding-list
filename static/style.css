@@ -1,7 +1,7 @@
 body {
   font-family: 'Calibri', sans-serif; /* Changed to Calibri */
-  background-color: #f4f1ee;
   margin: 0;
+  background: white;
   text-align: center;
   color: #2e3a2e;
 }
@@ -10,23 +10,7 @@ body {
   background: #f9f8f4;
   min-height: 40em;
   margin: 3em auto;
-  max-width: 600px;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  display: flex; /* Enable Flexbox for the card */
-  flex-direction: column; /* Stack the content vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  text-align: center; /* Center text within its own element */
-  border: 3px solid #556B2F;
-}
-
-.image-container{
-  background: #556B2F;
-  padding: 1em;
-  margin: 3em auto;
-  height: auto; /* You might want to adjust this based on your content */
-  max-width: 600px;
+  max-width: 40em;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   display: flex; /* Enable Flexbox for the card */
@@ -36,20 +20,27 @@ body {
   text-align: center; /* Center text within its own element */
 }
 
-.form-container, .wish-container, .details-container {
+
+.image-container, .form-container, .wish-container, .details-container {
   background: #f9f8f4;
-  padding: 1em;
   margin: 3em auto;
   height: auto; /* You might want to adjust this based on your content */
-  max-width: 600px;
+  max-width: 40em;
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   display: flex; /* Enable Flexbox for the card */
   flex-direction: column; /* Stack the content vertically */
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
   text-align: center; /* Center text within its own element */
-  border: 3px solid #556B2F;
+}
+
+.image-container{
+  width: 41em;
+}
+
+.form-container, .wish-container, .details-container {
+  padding: 1em;
 }
 
 /* Define Brittany Signature as a web font */
@@ -108,7 +99,7 @@ h1, .guest-name, .title-script {
 }
 
 img.invite-image {
-  width: 100%;
+  width: 42em;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
@@ -162,14 +153,14 @@ input {
 }
 
 .wish-title {
-  font-family: 'Great Vibes', cursive; /* or your elegant script font */
+  font-family: 'Brittany Signature', cursive; /* or your elegant script font */
   font-size: 2em;
   margin-bottom: 0.5em;
   color: #4a4a4a;
 }
 
 .wish-message {
-  font-family: 'Georgia', serif;
+  font-family: 'Calibri', sans-serif;;
   font-size: 1.1em;
   color: #555;
   margin-bottom: 1.5em;
@@ -242,6 +233,9 @@ a[href^="tel:"]:hover {
     margin: 1.5em auto;
     height: auto;
   }
+  p, h3 {
+    font-size: 0.8rem; /* or try 0.8rem if you want it even smaller */
+  }
 
   .image-container,
   .form-container,
@@ -256,9 +250,8 @@ a[href^="tel:"]:hover {
     font-size: 2rem;
   }
 
-  .invite-image {
-    width: 100%;
-    max-width: 100%;
+  img.invite-image {
+    width: 110%;
   }
 
   .radio-group {
@@ -266,11 +259,19 @@ a[href^="tel:"]:hover {
     gap: 1rem;
   }
 
+  .wish-message {
+    font-size: 0.8rem;
+  }
+
   #guestRadioGroup {
     flex-direction: row !important;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+  }
+
+  .radio-group label {
+    font-size: 0.8rem;
   }
 
 
@@ -282,7 +283,7 @@ a[href^="tel:"]:hover {
   .phone-link {
     width: 80%;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .phone-buttons {
