@@ -8,7 +8,7 @@ body {
 
 .card {
   background: #f9f8f4;
-  min-height: 48em; /* You might want to adjust this based on your content */
+  min-height: 45em;
   margin: 3em auto;
   max-width: 600px;
   border-radius: 20px;
@@ -21,8 +21,24 @@ body {
   border: 3px solid #556B2F;
 }
 
-.image-container, .form-container, .wish-container, .details-container {
+.image-container{
+  background: #556B2F;
+  padding: 1em;
+  margin: 3em auto;
+  height: auto; /* You might want to adjust this based on your content */
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  display: flex; /* Enable Flexbox for the card */
+  flex-direction: column; /* Stack the content vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text within its own element */
+}
+
+.form-container, .wish-container, .details-container {
   background: #f9f8f4;
+  padding: 1em;
   margin: 3em auto;
   height: auto; /* You might want to adjust this based on your content */
   max-width: 600px;
@@ -221,12 +237,17 @@ a[href^="tel:"]:hover {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .card,
+  .card{
+    width: 80%;
+    margin: 1.5em auto;
+    height: 80%;
+  }
+
   .image-container,
   .form-container,
   .wish-container,
   .details-container {
-    width: 80%;
+    width: 75%;
     margin: 1.5em auto;
     height: auto;
   }

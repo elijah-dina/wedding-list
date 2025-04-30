@@ -6,13 +6,9 @@
   <title>Your Invitation</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='audio.css') }}"> </head>
+</head>
 
 <body class="fade-in">
-  <audio id="backgroundMusic" loop>
-    <source src="{{ url_for('static', filename='music.mp3') }}" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 
 
   <div class="image-container">
@@ -24,14 +20,14 @@
 
     <div class="ceremony">
       <h3>Ceremony</h3>
-      <p>17:30 (5:30 PM)</p>
+      <p>17h30</p>
       <p>Saint Elie Church, Ain Aar</p>
       <p><a href="https://maps.google.com/?cid=3860426505224109966" class="details-link" target="_blank">View on Google Maps</a></p>
     </div>
 
     <div class="reception">
       <h3>Reception</h3>
-      <p>19:30 (7:30 PM)</p>
+      <p>19h30</p>
       <p>Club La Marina, Dbayeh</p>
       <p><a href="https://maps.google.com/?cid=17394086388713380498" class="details-link" target="_blank">View on Google Maps</a></p>
     </div>
@@ -68,9 +64,9 @@
 
   {% if remove != 'REMOVE' %}
   <div class="wish-container">
-    <h2 class="title-script">Wedding List</h2>
+    <h2 class="title-script">Gift Registry</h2>
     <p class="wish-message">
-      If you wish to contribute, our wedding registry details are below:
+      In case you wish, our gift registry details is available at:
     </p>
     <div class="bank-info">
       <p> WISH MONEY</p><br>
@@ -126,6 +122,5 @@
       return true; // Allow form submission
     }
   </script>
-  <script src="{{ url_for('static', filename='audio.js') }}"></script>
 </body>
 </html>
