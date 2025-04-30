@@ -8,7 +8,7 @@ body {
 
 .card {
   background: #f9f8f4;
-  min-height: 45em;
+  min-height: 40em;
   margin: 3em auto;
   max-width: 600px;
   border-radius: 20px;
@@ -240,7 +240,7 @@ a[href^="tel:"]:hover {
   .card{
     width: 80%;
     margin: 1.5em auto;
-    height: 80%;
+    height: auto;
   }
 
   .image-container,
