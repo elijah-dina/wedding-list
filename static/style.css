@@ -24,6 +24,7 @@ body {
 .image-container, .form-container, .wish-container, .details-container {
   background: #f9f8f4;
   margin: 3em auto;
+  padding: 1em;
   height: auto; /* You might want to adjust this based on your content */
   max-width: 40em;
   border-radius: 20px;
@@ -36,12 +37,9 @@ body {
 }
 
 .image-container{
-  width: 41em;
+  background: #2e3a2e;
 }
 
-.form-container, .wish-container, .details-container {
-  padding: 1em;
-}
 
 /* Define Brittany Signature as a web font */
 @font-face {
@@ -99,7 +97,7 @@ h1, .guest-name, .title-script {
 }
 
 img.invite-image {
-  width: 42em;
+  width: 40em;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
@@ -251,7 +249,7 @@ a[href^="tel:"]:hover {
   }
 
   img.invite-image {
-    width: 110%;
+    width: 100%;
   }
 
   .radio-group {
