@@ -41,13 +41,12 @@
       <input type="hidden" name="guest_id" value="{{ guest_id }}">
       <p>Will you be attending?</p>
       <div class="radio-group">
-        <label><input type="radio" name="will_attend" value="no" required onclick="hideGuestOptions()">Sorry, won't make it 😔</label>
-        <label><input type="radio" name="will_attend" value="yes" onclick="showGuestOptions()">With pleasure 😊</label>
-      </div>
-
-      <div id="guestOptions" style="display: none;">
-        <p>Number of Guests:</p>
-        <div class="radio-group" id="guestRadioGroup"></div>
+        <label>With pleasure 😊<input type="radio" name="will_attend" value="yes" onclick="showGuestOptions()"></label>
+        <div id="guestOptions" style="display: none;">
+          <p>Number of Guests:</p>
+          <div class="radio-group" id="guestRadioGroup"></div>
+        </div>
+        <label>Sorry, won't make it 😔<input type="radio" name="will_attend" value="no" required onclick="hideGuestOptions()"></label>
       </div>
 
       <button type="submit" class="rsvp-button">Confirm</button>
@@ -71,7 +70,7 @@
     <div class="bank-info">
       <p> WISH MONEY</p><br>
       <p><strong>Account Name:</strong> <br> Joseph Naccache or Mia Nasr</p><br>
-      <p><strong>Account Number:</strong> 20997602</p> <br>
+      <p><strong>Account ID:</strong> 20997602</p> <br>
     </div>
   </div>
   {% endif %}

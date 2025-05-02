@@ -66,6 +66,10 @@ h1, .guest-name, .title-script {
   margin-bottom: 1rem;
 }
 
+.title-script {
+  font-weight: normal;
+}
+
 .button-group {
   margin-top: 2rem;
 }
@@ -97,7 +101,7 @@ h1, .guest-name, .title-script {
 
 
 img.invite-image {
-  width: 40em;
+  width: 42em;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
@@ -194,11 +198,11 @@ input {
 }
 
 .phone-link {
+  font-weight: normal;
   background-color: #e8efe8;
   color: #2e3a2e;
   padding: 0.7em 1.5em;
   border-radius: 25px;
-  font-weight: bold;
   text-decoration: none;
   font-size: 1rem;
   transition: background 0.3s;
@@ -290,6 +294,7 @@ a[href^="tel:"]:hover {
     width: 80%;
     text-align: center;
     font-size: 0.8rem;
+    font-weight: normal;
     margin: 0;
   }
 
