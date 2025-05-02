@@ -20,8 +20,20 @@ body {
   text-align: center; /* Center text within its own element */
 }
 
+.image-container {
+  margin: 3em auto;
+  height: auto; /* You might want to adjust this based on your content */
+  max-width: 40em;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  display: flex; /* Enable Flexbox for the card */
+  flex-direction: column; /* Stack the content vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text within its own element */
+}
 
-.image-container, .form-container, .wish-container, .details-container {
+.form-container, .wish-container, .details-container {
   background: #f9f8f4;
   margin: 3em auto;
   padding: 1em;
@@ -36,9 +48,6 @@ body {
   text-align: center; /* Center text within its own element */
 }
 
-.image-container{
-  background: #2e3a2e;
-}
 
 
 /* Define Brittany Signature as a web font */
@@ -226,7 +235,10 @@ a[href^="tel:"]:hover {
     font-size: 0.8rem; /* or try 0.8rem if you want it even smaller */
   }
 
-  .image-container,
+  .image-container{
+    width: 75%;
+  }
+
   .form-container,
   .wish-container,
   .details-container {
@@ -235,12 +247,17 @@ a[href^="tel:"]:hover {
     height: auto;
   }
 
-  h1, .guest-name, .title-script {
+  h1, .guest-name {
+    font-size: 1.25rem;
+  }
+
+  .title-script {
     font-size: 2rem;
+    font-weight: normal;
   }
 
   img.invite-image {
-    width: 100%;
+    width: 110%;
   }
 
   .radio-group {

@@ -9,19 +9,8 @@
 </head>
 <body>
 <div class="card">
-  {% set words = name.split() %}
-  {% set first_word = words[0] | replace('.', '') %}
-  {% if first_word == 'Mr' and words[1] == '&' %}
-    {% set title = 'Mr. & Mrs.' %}
-    {% set rest = words[3:] %}
-  {% else %}
-    {% set title = words[0] | replace('.', '') ~ '.' %}
-    {% set rest = words[1:] %}
-  {% endif %}
-
   <p class="guest-name">
-    {{ title }}<br>
-    {{ rest | join(' ') }}
+    {{ name }}
   </p>
   <div class="button-group">
     <a href="{{ url_for('journey', guest_id=guest_id, guest_name=guest_name) }}" class="button-link">Our Journey</a>
