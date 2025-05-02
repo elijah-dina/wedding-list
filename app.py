@@ -39,29 +39,13 @@ def load_guest_data():
     return updated_records
 
 
-
 @app.route("/guest/<guest_name>/<int:guest_id>")
 def show_guest(guest_name, guest_id):
     records = load_guest_data()
     if 0 <= guest_id < len(records):
         guest = records[guest_id]
         if slugify(guest["NAME"]) == guest_name:
-            user_agent = request.headers.get("User-Agent", "").lower()
-            if "facebookexternalhit" in user_agent or "whatsapp" in user_agent:
-                return render_template(
-                    "og_preview.html",
-                    guest_name=guest["NAME"],
-                    guest_id=guest_id,
-                    image_url="https://mia-and-joseph-wedding.onrender.com/static/wedding-cover.jpg",
-                    url=request.url
-                )
-            return render_template(
-                "index.html",
-                name=guest["NAME"],
-                number=guest["NUMBER"],
-                guest_id=guest_id,
-                guest_name=guest_name
-            )
+            return render_template("index.html", name=guest["NAME"], number=guest["NUMBER"], guest_id=guest_id, guest_name=guest_name) # Pass guest_name to the template
     return "Guest not found", 404
 
 
