@@ -36,10 +36,10 @@
   <div class="form-container">
     <h2 class="title-script">RSVP</h2>
     {% if remove != 'DELAY' %}
-    <p>Kindly before <strong>June 15th</strong></p>
+    <p>Kindly before <strong>May 29th</strong></p>
     {% endif %}
     {% if remove != '' %}
-    <p>Kindly before <strong>May 29th</strong></p>
+    <p>Kindly before <strong>June 15th</strong></p>
     {% endif %}
 
     <form method="POST" action="{{ url_for('rsvp', guest_id=guest_id, guest_name=guest_name) }}" onsubmit="return handleSubmit()">
